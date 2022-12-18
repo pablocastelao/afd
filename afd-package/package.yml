@@ -1,0 +1,65 @@
+matches:
+  - trigger: ":getfile"
+    replace: "{{output}}"
+    vars:
+      - name: files
+        type: script
+        params:
+          args: 
+            - python
+            - "%CONFIG%/match/packages/afd-package/getfile.py"
+            - "-l"
+      - name: interfaces
+        type: script
+        params:
+          args: 
+            - python
+            - "%CONFIG%/match/packages/afd-package/getfile.py"
+            - "-i"
+      - name: form1
+        type: form
+        params:
+          layout: |
+            Select file:
+            [[file]]
+            or specify the one you want (full path file)
+            [[path_file]] 
+            Select download command:
+            [[method]]
+            Select web protocol (if apply):
+            [[protocol]]
+            Select interface:
+            [[interface]]
+          fields:
+            file:
+              type: choice
+              values: "{{files}}"
+            method:
+              type: choice
+              values:
+                - wget
+                - curl
+                - certutil.exe
+                - Invoke-WebRequest
+                - Invoke-Expression
+                - smb (net use;copy)
+                - smbclient
+            protocol:
+              type: choice
+              values:
+                - http
+                - https
+            interface:
+              type: choice
+              values: "{{interfaces}}"
+      - name: output
+        type: script
+        params:
+          args: 
+            - python
+            - "%CONFIG%/match/packages/afd-package/getfile.py"
+            - '{{form1.file}}'
+            - '{{form1.interface}}'
+            - '{{form1.method}}'
+            - '{{form1.path_file}}'
+            - '{{form1.protocol}}'

@@ -1,0 +1,3 @@
+linpeas:/opt/privilege-escalation-awesome-scripts-suite/linPEAS/linpeas.sh
+pspy:/opt/pspy/pspy64
+winpeas:/opt/privilege-escalation-awesome-scripts-suite/winPEAS/winPEASbat/winPEAS.bat

@@ -1,0 +1,5 @@
+name: "afd-package"
+title: "AFD - Automatic File Download"
+description: An automatic file download package using auxiliar scripts for post-exploitation stages during pentesting
+version: 0.1.0
+author: Pablo Castelao Cueto
